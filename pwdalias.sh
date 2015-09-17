@@ -1,3 +1,4 @@
+#alias pa='sh /Users/mbc/[mysystem]/myscripts/admintools/pwdalias.sh'#
 #!/bin/bash
 echo "# generating new alias from current pwd #"
 echo "Create alias: ";read newAlias
