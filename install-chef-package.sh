@@ -1,6 +1,4 @@
 # CHEF Server & Chef Development Kit Install script
-# /Users/mbc/[nzsystem]/devops/dev/install-pkg-chef.sh
-# ssh -i "ec2-chef.pem" ubuntu@54.209.245.183
 
 #!/bin/bash
 sudo su
