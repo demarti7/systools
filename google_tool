@@ -1,0 +1,13 @@
+#############################################################################
+#    CLI GOOGLE FUNCTION                                                    #
+#    author: michael.chu@newzulu.com                                        #
+#    created:  Fri 18 Sep 2015                                              #
+#    use: google <whatever you want to google>                              #
+############################################################################# 
+
+# add these functions to ~/.bash_profile #
+function encode() { echo -n $@ | perl -pe's/([^-_.~A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg'; }
+function google() { open -a /Applications/Firefox.app http://www.google.com/search?hl=en#q="`encode $@`" ;}
+
+
+function googlel() { lynx http://www.google.com/search?hl=en#q="`encode $@`" ;}
