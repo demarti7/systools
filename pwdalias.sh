@@ -13,5 +13,4 @@ echo "break"
 genalias=$(cat /Users/mbc/\[mysystem\]/myscripts/admintools/pwdalias_mark1)
 echo $genalias >> ~/.bash_profile
 echo "now execute: source ~/.bash_profile"
-clear
 echo $genalias "has been made"
