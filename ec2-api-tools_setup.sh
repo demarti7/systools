@@ -43,3 +43,9 @@ export PATH=/usr/local/aws/bin:$PATH
 sudo apt-get install python-pip
 sudo pip install cli53
 echo "run 'cli53 list'"
+
+# CLEANUP
+sudo rm awscli-bundle.zip
+sudo rm cli53-0.4.4.tar.gz
+sudo rm ec2-api-tools.zip
+echo "run 'cli53 list'"
