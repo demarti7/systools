@@ -1,0 +1,23 @@
+{
+  "name": "aws-helper",
+  "version": "0.0.1",
+  "description": "aws helpers for commonly used tasks",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jayoharedee/systools.git"
+  },
+  "author": "jayrue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayoharedee/systools/issues"
+  },
+  "homepage": "https://github.com/jayoharedee/systools#readme",
+  "dependencies": {
+    "aws-sdk": "^2.2.37",
+    "commander": "^2.9.0"
+  }
+}
