@@ -18,6 +18,9 @@
   "homepage": "https://github.com/jayoharedee/systools#readme",
   "dependencies": {
     "aws-sdk": "^2.2.37",
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "node-crontab": "0.0.8",
+    "nodemailer": "^2.2.1",
+    "nodemailer-ses-transport": "^1.3.0"
   }
 }

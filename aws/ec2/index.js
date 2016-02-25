@@ -35,7 +35,7 @@ module.exports = function (aws) {
                    }
                }
             ],
-            InstanceType: 't1.micro',
+            InstanceType: 't2.micro',
             SecurityGroupIds: ['sg-074d9862'],
             Monitoring: {Enabled: false}
         }, (err, result) => {
@@ -48,8 +48,77 @@ module.exports = function (aws) {
         })
     }
 
+    ,
+
+    kill = () => {
+        const params = {
+            InstanceIds: [
+                // commander will be used to fill this via args at a later time
+                'i-f733bd30'
+            ],
+            DryRun: false
+        }
+
+        ec2.terminateInstances(params, (err, data) => {
+            if (err) return console.error(err, err.stack)
+
+            console.log(data)
+        })
+    }
+
+    ,
+
+    typeInfo = () => {
+        const params = {
+            Attribute: 'instanceType',
+            InstanceId: 'i-2049f8e7'
+        }
+
+        return new Promise((resolve, reject) => {
+            ec2.describeInstanceAttribute(params, (err, data) => {
+                if (err) {
+                    reject(err)
+                    return console.error(err, err.stack)
+                }
+
+                resolve(data)
+            })
+        })
+    }
+
+    ,
+
+    getAllTypeInfo = () => {
+        const params = {
+            Filters: [
+                {
+                    Name: 'tag-key',
+                    Values: ['Production']
+                },
+                {
+                    Name: 'tag-value',
+                    Values: ['Node']
+                }
+            ]
+        }
+
+        return new Promise((resolve, reject) => {
+            ec2.describeInstances(params, function(err, data) {
+              if (err) {
+                  reject(err)
+                  return console.error(err, err.stack)
+              }
+
+              resolve(data)
+            })
+        })
+    }
+
     return Object.freeze({
         whatsRunning,
-        spinUp
+        spinUp,
+        kill,
+        typeInfo,
+        getAllTypeInfo
     })
 }
