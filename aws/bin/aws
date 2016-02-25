@@ -1,0 +1,22 @@
+#!/usr/bin/env/ node
+const commander = require('commander')
+const mail      = require('../lib/mail')
+const aws       = require('../app')
+const ec2       = require('../ec2')(aws)
+
+ec2.getAllTypeInfo()
+
+    .then((response) => {
+         // get whats needed from the response
+         const instances = response.Reservations[0].Instances[0]
+         const instanceId = instances.InstanceId
+         const instanceType = instances.InstanceType
+
+         // send those items
+         const options = mail.options({instanceId, instanceType})
+         mail.send(options)
+    })
+
+    .catch((err) => {
+        mail.send({err})
+    })
