@@ -2,16 +2,13 @@
 const nodemailer = require('nodemailer')
 const sesTransport = require('nodemailer-ses-transport')
 
-// your keys
-const accessKeyId = process.env.SES_KEY || "YOUR KEY HERE"
-const secretAccessKey = process.env.SES_SECRET || "YOUR KEY HERE"
+const accessKeyId = process.env.SES_KEY || "YOURKEYHERE"
+const secretAccessKey = process.env.SES_SECRET || "YOURKEYHERE"
+
 function Mail() {
-    const options = ({InstanceId, InstanceType}) => {
-        const subject = `AWS EMAIL -  ${InstanceId}`
-        const body = `
-            <p> Instance Id: ${InstanceId}  </p>
-            <p> Instance Type: ${InstanceType.Value} </p>
-        `
+    const options = ({instanceId, instanceType}) => {
+        const subject = `AWS EMAIL -  ${instanceType}`
+        const body = ` <p> Instance Type: ${instanceId} </p>`
         return {
             from: 'no-reply@homesteadroofs.ca',
             to: 'jmorenstein@live.com',
