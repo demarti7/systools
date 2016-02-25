@@ -1,6 +1,7 @@
 #!/usr/bin/env/ node
 
 const commander = require('commander')
+const crontab   = require('node-crontab')
 const mail      = require('../lib/mail')
 const aws       = require('../app')
 const ec2       = require('../ec2')(aws)
@@ -25,6 +26,8 @@ const checkInstances = () => {
     })
 }
 
-setInterval(() => {
+// cronjob to run check
+var jobId = crontab.scheduleJob("*/2 * * * *", () => {
+    // every two minutes
     checkInstances()
-}, 60000)
+});
